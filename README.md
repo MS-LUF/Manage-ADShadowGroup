@@ -69,7 +69,7 @@ A simple Powershell Module to help people managing Active Directory Shadow Group
 	C:\PS> Get-ADShadowGroup -GroupNameValue "Shadow-Domain Admins"
 #>
 
-	<#
+<#
 	.SYNOPSIS 
 	Create a new AD ShadowGroup
 
@@ -121,9 +121,9 @@ A simple Powershell Module to help people managing Active Directory Shadow Group
 
 	.EXAMPLE
 	C:\PS> Add-ADShadowGroup -GroupNameValue "Shadow-Domain Admins" -GroupSIDValue "S-1-1-11-1111111111-1111111111-111111111-111"
-	#>
+#>
 	
-	<#
+<#
 	.SYNOPSIS 
 	Remove an existing AD ShadowGroup
 
@@ -211,9 +211,9 @@ A simple Powershell Module to help people managing Active Directory Shadow Group
 	
 	.EXAMPLE
 	C:\PS> Add-ADShadowGroupMember -GroupNameValue "Shadow-Domain Admins" -MemberNameValue "Temp-Super-Admin" -MemberNameValue user -TTLValue "3600"
-	#>
+#>
 	
-		<#
+<#
 	.SYNOPSIS 
 	Remove an existing  member in an existing AD ShadowGroup
 
@@ -273,6 +273,6 @@ A simple Powershell Module to help people managing Active Directory Shadow Group
 	
 	.EXAMPLE
 	C:\PS> Remove-ADShadowGroupMember -GroupNameValue "Shadow-Domain Admins" -MemberNameValue "Super-Admin" -MemberNameValue user
-	#>
+#>
 	
 	
