@@ -25,11 +25,6 @@
 
 # begin functions
 Function Get-ADShadowGroup { 
-	[CmdletBinding()] 
-	Param( 
-		  [parameter(Mandatory=$True)] 
-		  [String]$GroupNameValue
-		  ) 
 <#
 	.SYNOPSIS 
 	Get properties of an AD ShadowGroup, including members
@@ -80,8 +75,12 @@ Function Get-ADShadowGroup {
 
 	.EXAMPLE
 	C:\PS> Get-ADShadowGroup -GroupNameValue "Shadow-Domain Admins"
-#>
-		  
+#>	
+	[CmdletBinding()] 
+	Param( 
+		  [parameter(Mandatory=$True)] 
+		  [String]$GroupNameValue
+		  ) 		  
 	try {
 		import-module ActiveDirectory
 	} catch {
@@ -102,13 +101,6 @@ Function Get-ADShadowGroup {
 }
 
 Function Add-ADShadowGroup {
-	[CmdletBinding()]
-	Param(
-	  [Parameter(Mandatory=$False,Position=1)]
-		[string]$GroupNameValue,
-		  [Parameter(Mandatory=$False,Position=2)]
-		[string]$GroupSIDValue
-	)
 	<#
 	.SYNOPSIS 
 	Create a new AD ShadowGroup
@@ -161,7 +153,14 @@ Function Add-ADShadowGroup {
 
 	.EXAMPLE
 	C:\PS> Add-ADShadowGroup -GroupNameValue "Shadow-Domain Admins" -GroupSIDValue "S-1-1-11-1111111111-1111111111-111111111-111"
-	#>
+	#>	
+	[CmdletBinding()]
+	Param(
+	  [Parameter(Mandatory=$False,Position=1)]
+		[string]$GroupNameValue,
+		  [Parameter(Mandatory=$False,Position=2)]
+		[string]$GroupSIDValue
+	)
 	try {
 		import-module ActiveDirectory
 	} catch {
@@ -195,20 +194,6 @@ Function Add-ADShadowGroup {
 }
 
 function Remove-ADShadowGroup {
-	[CmdletBinding()]
-	Param(
-	  [Parameter(Mandatory=$False,Position=1)]
-		[string]$ShadowGroupToremove
-	)
-	try {
-		import-module ActiveDirectory
-	} catch {
-		Write-Host "Not able to load active directory module - KO"  -foregroundcolor "Red"
-		Write-Host "Please check RSAT is installed if you are running the script on A PC"  -foregroundcolor "Red"
-		write-host "Error Type: $($_.Exception.GetType().FullName)" -ForegroundColor "Yellow"
-		write-host "Error Message: $($_.Exception.Message)" -ForegroundColor "Yellow"
-		return 
-	}
 	<#
 	.SYNOPSIS 
 	Remove an existing AD ShadowGroup
@@ -228,6 +213,20 @@ function Remove-ADShadowGroup {
 	.EXAMPLE
 	C:\PS> Remove-ADShadowGroup -GroupNameValue "Shadow-Domain Admins"
 	#>
+	[CmdletBinding()]
+	Param(
+	  [Parameter(Mandatory=$False,Position=1)]
+		[string]$ShadowGroupToremove
+	)
+	try {
+		import-module ActiveDirectory
+	} catch {
+		Write-Host "Not able to load active directory module - KO"  -foregroundcolor "Red"
+		Write-Host "Please check RSAT is installed if you are running the script on A PC"  -foregroundcolor "Red"
+		write-host "Error Type: $($_.Exception.GetType().FullName)" -ForegroundColor "Yellow"
+		write-host "Error Message: $($_.Exception.Message)" -ForegroundColor "Yellow"
+		return 
+	}
 	$CurrentConfigurationPartDN = ([ADSI]"LDAP://RootDSE").configurationNamingContext
 	$ShadowGroupPath = "cn=Shadow Principal Configuration,cn=Services,$($CurrentConfigurationPartDN)"
 
@@ -266,17 +265,6 @@ function Remove-ADShadowGroup {
 }
 
 function Add-ADShadowGroupMember {
-	Param(
-	  [Parameter(Mandatory=$true,Position=1)]
-		[string]$GroupNameValue,
-	  [Parameter(Mandatory=$true,Position=2)]
-		[string]$MemberNameValue,
-     [parameter(Mandatory=$true,Position=3)]
-     [ValidateSet("user", "group")]
-        [String]$TypeValue,
-	 [Parameter(Mandatory=$False,Position=4)]
-		[string]$TTLValue
-	)
 	<#
 	.SYNOPSIS 
 	Add a new member in an existing AD ShadowGroup
@@ -346,6 +334,17 @@ function Add-ADShadowGroupMember {
 	.EXAMPLE
 	C:\PS> Add-ADShadowGroupMember -GroupNameValue "Shadow-Domain Admins" -MemberNameValue "Temp-Super-Admin" -MemberNameValue user -TTLValue "3600"
 	#>
+	Param(
+	  [Parameter(Mandatory=$true,Position=1)]
+		[string]$GroupNameValue,
+	  [Parameter(Mandatory=$true,Position=2)]
+		[string]$MemberNameValue,
+     [parameter(Mandatory=$true,Position=3)]
+     [ValidateSet("user", "group")]
+        [String]$TypeValue,
+	 [Parameter(Mandatory=$False,Position=4)]
+		[string]$TTLValue
+	)
 	try {
 		import-module ActiveDirectory
 	} catch {
@@ -399,16 +398,7 @@ function Add-ADShadowGroupMember {
 }
 
 function Remove-ADShadowGroupMember {
-	Param(
-	  [Parameter(Mandatory=$true,Position=1)]
-		[string]$GroupNameValue,
-	  [Parameter(Mandatory=$true,Position=2)]
-		[string]$MemberNameValue,
-     [parameter(Mandatory=$true,Position=3)]
-     [ValidateSet("user", "group")]
-        [String]$TypeValue
-	)
-	<#
+		<#
 	.SYNOPSIS 
 	Remove an existing  member in an existing AD ShadowGroup
 
@@ -469,6 +459,15 @@ function Remove-ADShadowGroupMember {
 	.EXAMPLE
 	C:\PS> Remove-ADShadowGroupMember -GroupNameValue "Shadow-Domain Admins" -MemberNameValue "Super-Admin" -MemberNameValue user
 	#>
+	Param(
+	  [Parameter(Mandatory=$true,Position=1)]
+		[string]$GroupNameValue,
+	  [Parameter(Mandatory=$true,Position=2)]
+		[string]$MemberNameValue,
+     [parameter(Mandatory=$true,Position=3)]
+     [ValidateSet("user", "group")]
+        [String]$TypeValue
+	)
 	try {
 		import-module ActiveDirectory
 	} catch {

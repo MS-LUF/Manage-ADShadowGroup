@@ -9,10 +9,10 @@
 @{
  
 # Script module or binary module file associated with this manifest
-ModuleToProcess = 'Manage-ADShadowGroup.psm1'
+RootModule = 'Manage-ADShadowGroup.psm1'
  
 # Version number of this module.
-ModuleVersion = '0.1'
+ModuleVersion = '0.2'
  
 # ID used to uniquely identify this module
 GUID = 'a9dd94cd-102a-4b40-a27f-8fa38f0d0b35'
@@ -27,10 +27,10 @@ CompanyName = 'lucas-cueff.com'
 Copyright = '(c) 2017 lucas-cueff.com Distributed under Artistic Licence 2.0 (https://opensource.org/licenses/artistic-license-2.0).'
 
 # Licence URI
-LicenceUri = 'https://opensource.org/licenses/artistic-license-2.0'
+#LicenceUri = 'https://opensource.org/licenses/artistic-license-2.0'
 
 # Repository Source Location
-RepositorySourceLocation = ''
+#RepositorySourceLocation = ''
 
 # Description of the functionality provided by this module
 Description = 'Add few cmdlets to manage operations around Active Directory ShadowGroup'
