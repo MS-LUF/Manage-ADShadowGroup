@@ -1,7 +1,13 @@
 # Manage-ADShadowGroup
 A simple Powershell Module to help people managing Active Directory Shadow Group
 
-<#
+# install Manage-ADShadowGroup from PowerShell Gallery repository
+You can easily install it from powershell gallery repository https://www.powershellgallery.com/packages/Manage-ADShadowGroup/ using a simple powershell command and an internet access :-)
+```
+	Install-Module -Name Manage-ADShadowGroup
+```
+# import module from PowerShell 
+```
 	.SYNOPSIS 
 	Help managing Active Directory ShadowGroup (create, add member, remove...)
 	.DESCRIPTION
@@ -15,9 +21,10 @@ A simple Powershell Module to help people managing Active Directory Shadow Group
 	
 	.EXAMPLE
 	C:\PS> import-module Manage-ADShadowGroup.psm1
-#>
 
-<#
+```
+# module content : Get-ADShadowGroup function
+```
 	.SYNOPSIS 
 	Get properties of an AD ShadowGroup, including members
 
@@ -67,9 +74,10 @@ A simple Powershell Module to help people managing Active Directory Shadow Group
 
 	.EXAMPLE
 	C:\PS> Get-ADShadowGroup -GroupNameValue "Shadow-Domain Admins"
-#>
+```
 
-<#
+# module content : Add-ADShadowGroup funtion
+```
 	.SYNOPSIS 
 	Create a new AD ShadowGroup
 
@@ -121,9 +129,10 @@ A simple Powershell Module to help people managing Active Directory Shadow Group
 
 	.EXAMPLE
 	C:\PS> Add-ADShadowGroup -GroupNameValue "Shadow-Domain Admins" -GroupSIDValue "S-1-1-11-1111111111-1111111111-111111111-111"
-#>
-	
-<#
+```
+
+# module content : Add-ADShadowGroupMember function
+```
 	.SYNOPSIS 
 	Remove an existing AD ShadowGroup
 
@@ -211,9 +220,10 @@ A simple Powershell Module to help people managing Active Directory Shadow Group
 	
 	.EXAMPLE
 	C:\PS> Add-ADShadowGroupMember -GroupNameValue "Shadow-Domain Admins" -MemberNameValue "Temp-Super-Admin" -MemberNameValue user -TTLValue "3600"
-#>
-	
-<#
+```
+
+# module content : Remove-ADShadowGroupMember function
+```
 	.SYNOPSIS 
 	Remove an existing  member in an existing AD ShadowGroup
 
@@ -273,6 +283,6 @@ A simple Powershell Module to help people managing Active Directory Shadow Group
 	
 	.EXAMPLE
 	C:\PS> Remove-ADShadowGroupMember -GroupNameValue "Shadow-Domain Admins" -MemberNameValue "Super-Admin" -MemberNameValue user
-#>
+```
 	
 	
