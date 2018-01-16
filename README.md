@@ -1,12 +1,12 @@
 # Manage-ADShadowGroup
 A simple Powershell Module to help people managing Active Directory Shadow Group
 
-# install Manage-ADShadowGroup from PowerShell Gallery repository
+## install Manage-ADShadowGroup from PowerShell Gallery repository
 You can easily install it from powershell gallery repository https://www.powershellgallery.com/packages/Manage-ADShadowGroup/ using a simple powershell command and an internet access :-)
 ```
 	Install-Module -Name Manage-ADShadowGroup
 ```
-# import module from PowerShell 
+## import module from PowerShell 
 ```
 	.SYNOPSIS 
 	Help managing Active Directory ShadowGroup (create, add member, remove...)
@@ -23,7 +23,8 @@ You can easily install it from powershell gallery repository https://www.powersh
 	C:\PS> import-module Manage-ADShadowGroup.psm1
 
 ```
-# module content : Get-ADShadowGroup function
+## module content
+### Get-ADShadowGroup function
 ```
 	.SYNOPSIS 
 	Get properties of an AD ShadowGroup, including members
@@ -76,7 +77,7 @@ You can easily install it from powershell gallery repository https://www.powersh
 	C:\PS> Get-ADShadowGroup -GroupNameValue "Shadow-Domain Admins"
 ```
 
-# module content : Add-ADShadowGroup funtion
+###  Add-ADShadowGroup funtion
 ```
 	.SYNOPSIS 
 	Create a new AD ShadowGroup
@@ -131,7 +132,7 @@ You can easily install it from powershell gallery repository https://www.powersh
 	C:\PS> Add-ADShadowGroup -GroupNameValue "Shadow-Domain Admins" -GroupSIDValue "S-1-1-11-1111111111-1111111111-111111111-111"
 ```
 
-# module content : Add-ADShadowGroupMember function
+### Add-ADShadowGroupMember function
 ```
 	.SYNOPSIS 
 	Remove an existing AD ShadowGroup
@@ -222,7 +223,7 @@ You can easily install it from powershell gallery repository https://www.powersh
 	C:\PS> Add-ADShadowGroupMember -GroupNameValue "Shadow-Domain Admins" -MemberNameValue "Temp-Super-Admin" -MemberNameValue user -TTLValue "3600"
 ```
 
-# module content : Remove-ADShadowGroupMember function
+### Remove-ADShadowGroupMember function
 ```
 	.SYNOPSIS 
 	Remove an existing  member in an existing AD ShadowGroup
