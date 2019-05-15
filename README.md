@@ -1,3 +1,4 @@
+![image](https://www.lucas-cueff.com/files/gallery.png)
 # Manage-ADShadowGroup
 A simple Powershell Module to help people managing Active Directory Shadow Group
 
